@@ -12,6 +12,13 @@ def lookup_table(key, value, data):
 
     return output
 
+def note_ids():
+    return lookup_table('item_id', 'id', 'notes')
+
+def notes(task):
+    """Return notes for task"""
+    return [i for i in API.state['notes'] if i['item_id'] == task]
+
 def project_ids():
     return lookup_table('id', 'name', 'projects')
 
@@ -29,6 +36,8 @@ def label_ids():
 
 def task_ids():
     return lookup_table('id', 'content', 'items')
+
+
 
 def incomplete_task_ids():
     tasks = lookup_table('id', 'checked', 'items')

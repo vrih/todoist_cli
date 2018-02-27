@@ -34,10 +34,14 @@ def get_priority() -> Union[None, int]:
         priority = input("priority: ")
         if priority == "":
             return None
-        if priority not in [1, 2, 3, 4, 5]:
-            print("Priority must be between 1 and 5")
+        try:
+            if int(priority) not in [1, 2, 3, 4, 5]:
+                print("Priority must be between 1 and 5!")
+                continue
+            return int(priority)
+        except ValueError:
+            print("Priority must be between 1 and 5!")
             continue
-        return int(priority)
 
 def get_task() -> int:
     """Take user input and return task"""

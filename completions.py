@@ -1,13 +1,18 @@
 """Completion functions for readline"""
 import data_accessor as da
+import interactive as iv
 
 def complete(text, state):
     """Tab complete"""
     projects = list(da.project_names().keys())
     date = ["today", "tomorrow"]
+    tasks = da.incomplete_task_ids()
+    commands = list(iv.FUNCTIONS.keys())
 
     completions = projects
     completions.extend(date)
+    completions.extend(tasks)
+    completions.extend(commands)
 
     for project in completions:
         if project.startswith(text):
