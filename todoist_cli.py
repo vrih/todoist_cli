@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """CLI for todoist"""
 import argparse
 from typing import List, Dict
